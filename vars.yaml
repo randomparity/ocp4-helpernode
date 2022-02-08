@@ -1,0 +1,54 @@
+---
+disk: sda
+helper:
+  name: "lab-helper"
+  ipaddr: "192.168.10.2"
+dns:
+  domain: "drc.nz"
+  clusterid: "ocp4"
+  forwarder1: "8.8.8.8"
+  forwarder2: "8.8.4.4"
+dhcp:
+  router: "192.168.10.1"
+  bcast: "192.168.10.255"
+  netmask: "255.255.255.0"
+  poolstart: "192.168.10.100"
+  poolend: "192.168.10.249"
+  ipid: "192.168.10.0"
+  netmaskid: "255.255.255.0"
+bootstrap:
+  name: "os-bs"
+  ipaddr: "192.168.10.200"
+  macaddr: "9e:85:99:22:31:c4"
+masters:
+  - name: "os-cp-1"
+    ipaddr: "192.168.10.201"
+    macaddr: "46:d9:35:ac:d0:f6"
+  - name: "os-cp-2"
+    ipaddr: "192.168.10.202"
+    macaddr: "0a:7a:bc:19:65:a5"
+  - name: "os-cp-3"
+    ipaddr: "192.168.10.203"
+    macaddr: "0e:d5:61:11:1a:73"
+workers:
+  - name: "os-w-1"
+    ipaddr: "192.168.10.210"
+    macaddr: "8e:f5:c1:c9:59:5b"
+  - name: "os-w-2"
+    ipaddr: "192.168.10.211"
+    macaddr: "ba:4d:d3:17:b6:11"
+  - name: "os-w-3"
+    ipaddr: "192.168.10.212"
+    macaddr: "42:06:55:54:4d:0d"
+other:
+  - name: "non-cluster-vm"
+    ipaddr: "192.168.10.220"
+    macaddr: "52:54:00:f4:2e:2e"
+setup_registry:
+  deploy: true
+  autosync_registry: true
+  registry_image: docker.io/library/registry:2
+  local_repo: "ocp4/openshift4"
+  product_repo: "openshift-release-dev"
+  release_name: "ocp-release"
+  release_tag: "4.9.17-x86_64"

@@ -625,6 +625,11 @@
   - name: Setting network device system name as a fact
     set_fact:
       dsname: "{{ devicesystemname.stdout }}"
+  
+  - name: Displaying network device system name
+    debug:
+      msg:
+        - "Using NetworkManager device {{ dsname }}"
 
   - name: Setting DNS server ip on network interface "{{ dsname }}" to 127.0.0.1
     shell: 'nmcli con mod "{{ dsname }}" ipv4.dns 127.0.0.1'
